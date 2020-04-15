@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Kilka"
+    }
+  },
+  "defaultProject": "Kilka",
+  "cli": {
+    "analytics": false
+  }
 }

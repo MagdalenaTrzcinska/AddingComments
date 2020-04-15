@@ -1,1 +1,132 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+  background-color: #d9d9d9;
+}
+article {
+  width: 1000px;
+  height: 1120px;
+  background-color: white;
+  border-radius: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.text {
+  float: left;
+  width: 70%;
+  margin-left: 5%;
+
+  input{
+    outline: none;
+  }
+
+  .data {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .textadd {
+    width: 100%;
+    height: 64px;
+    outline: none;
+    font-size: 15px;
+    resize: none;
+    border: solid 1px #cecece;
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 0;
+    right: 2%;
+  }
+}
+
+
+.boardOfComments {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 1000px;
+  height: 900px;
+  overflow: scroll;
+  top:2%;
+
+  &__single {
+    width: 60%;
+    height: 15%;
+    border: solid 1px #8b8b8b;
+    position: relative;
+    top: 5%;
+    left: 50%;
+    margin-bottom: 3%;
+    transform: translateX(-50%);
+
+    &-photo {
+      margin-left: 1%;
+      margin-top: 1%;
+      width: 20%;
+      height: 90%;
+      float: left;
+      border: solid 1px #8b8b8b;
+    }
+  }
+
+}
+
+
+.newComments {
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  width: 1000px;
+  height: 220px;
+  bottom: -40px;
+
+  &__add {
+    width: 60%;
+    height: 60%;
+    border: solid 1px #8b8b8b;
+    position: absolute;
+
+    left: 50%;
+    margin-bottom: 3%;
+    transform: translateX(-50%);
+
+    .photo {
+      margin-left: 1%;
+      margin-top: 1%;
+      width: 20%;
+      height: 90%;
+      float: left;
+      border: solid 1px #8b8b8b;
+      overflow: hidden;
+
+      button{
+        font-size: 20px;
+
+      }
+
+      .new {
+        width: 50%;
+        height: 50%;
+      }
+    }
+
+  }
+
+}
+
+
+button:active{
+
+  border: none;
+  border-radius: 5px;
+}

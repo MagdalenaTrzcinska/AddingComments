@@ -4,13 +4,13 @@
       <img src={{comment.photo}}>
     </div>
     <div class="text">
-      <div class="data">{{comment.name}} | {{comment.data| date: 'shortTime'}} | {{comment.data | date: 'fullDate'}}</div>
-      <textarea [disabled]="comment.disabledText" class="textadd" value="{{comment.com}}"></textarea>
+      <div class="data">{{comment.name}} | {{comment.dateAdded| date: 'shortTime'}} | {{comment.dateAdded | date: 'fullDate'}}</div>
+      <textarea [disabled]="comment.isDisabledText" class="textadd" value="{{comment.comment}}"></textarea>
 
       <div class="btn">
-        <button [hidden]="comment.hiddenDeleteorEditBtn" (click)="edit(i)" value="edit">EDIT</button>
-        <button [hidden]="comment.hiddenDeleteorEditBtn" (click)="remove(i)" value="delete">DELETE</button>
-        <button [hidden]="comment.hiddenOKBtn"  (click)="edit(i)" value="ok">OK</button>
+        <button [hidden]="comment.isHiddenRemoveOrEditBtn" (click)="onEditOrDelete(i)" value="edit">EDIT</button>
+        <button [hidden]="comment.isHiddenRemoveOrEditBtn" (click)="onRemove(i)" value="remove">DELETE</button>
+        <button [hidden]="comment.isHiddenOKBtn"  (click)="onEditOrDelete(i)" value="ok">OK</button>
       </div>
     </div>
   </div>

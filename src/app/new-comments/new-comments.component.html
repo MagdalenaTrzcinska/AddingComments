@@ -1,7 +1,7 @@
 <section class="newComments">
   <div class="newComments__add">
     <div class="photo">
-      <button [hidden]="btn" (click)="onChoosePhoto()">Select a photo</button>
+      <button [hidden]="btnSelectPhoto" (click)="onChoosePhoto()">Select a photo</button>
       <span *ngFor="let photo of [1,2,3,4]; let i=index">
         <img class="new" (click)="onPhotos(i+1)" [hidden]="photosToChoose" src="../assets/choose{{i+1}}.jpeg">
       </span>
@@ -13,7 +13,7 @@
       <div class="data"><input type="text" placeholder="NAME" [(ngModel)]="username">{{todaysDate | date: 'shortTime'}}
         | {{todaysDate | date: 'fullDate'}}</div>
 
-      <textarea (keyup)="pressEnter($event)" class="textadd" [(ngModel)]="com"></textarea>
+      <textarea (keyup)="pressEnter($event)" class="textadd" [(ngModel)]="comm"></textarea>
 
       <div class="btn">
         <button (click)="onAddComment()" type="submit" value="add">ADD</button>

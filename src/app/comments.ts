@@ -1,10 +1,10 @@
 export interface Comment {
-  id?: number|null;
+  id?: number | null;
   name: string;
-  data;
+  dateAdded;
   photo: string;
-  com: string;
-  disabledText: boolean;
-  hiddenDeleteorEditBtn: boolean;
-  hiddenOKBtn: boolean;
+  comment: string;
+  isDisabledText: boolean;
+  isHiddenRemoveOrEditBtn: boolean;
+  isHiddenOKBtn: boolean;
 }

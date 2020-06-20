@@ -1,34 +1,29 @@
 import {Component} from '@angular/core';
-
-
 import {CommsService} from '../comms.service';
 import {Comment} from '../comments';
-import {Subscription} from 'rxjs';
-import {BehaviorSubject, Observable, Subject} from 'rxjs';
-
 
 @Component({
   selector: 'app-board-of-comments',
   templateUrl: './board-of-comments.component.html',
   styleUrls: ['./board-of-comments.component.scss'],
 })
+
 export class BoardOfCommentsComponent {
    comments: Comment[] = [];
 
-
   constructor(private service: CommsService) {
-   service.getComments().subscribe(comms => {
+   service.subject.subscribe(comms => {
       this.comments = comms;
     });
   }
 
-  remove(i) {
-    this.service.remove(i);
+  onRemove(numberComment: number) {
+    this.service.remove(numberComment);
   }
 
-  edit(i) {
-    this.comments[i].disabledText = !this.comments[i].disabledText;
-    this.comments[i].hiddenDeleteorEditBtn = !this.comments[i].hiddenDeleteorEditBtn;
-    this.comments[i].hiddenOKBtn = !this.comments[i].hiddenOKBtn;
+  onEditOrDelete(numberComment: number) {
+    this.comments[numberComment].isDisabledText = !this.comments[numberComment].isDisabledText;
+    this.comments[numberComment].isHiddenRemoveOrEditBtn = !this.comments[numberComment].isHiddenRemoveOrEditBtn;
+    this.comments[numberComment].isHiddenOKBtn = !this.comments[numberComment].isHiddenOKBtn;
   }
 }

@@ -9,10 +9,10 @@ import {CommsService} from '../comms.service';
 })
 export class NewCommentsComponent {
 
-  btn: boolean = false;
-  selectedPhoto: string;
-  username: string;
-  com: string;
+  btnSelectPhoto = false;
+  selectedPhoto = '';
+  username = '';
+  comm = '';
   todaysDate: number = Date.now();
   photosToChoose = true;
 
@@ -21,42 +21,40 @@ export class NewCommentsComponent {
 
   onChoosePhoto() {
     this.photosToChoose = false;
-    this.btn = true;
+    this.btnSelectPhoto = true;
   }
 
-  onPhotos(event) {
+  onPhotos(numberPhoto: number) {
     this.photosToChoose = true;
-    this.selectedPhoto = '../assets/choose' + event + '.jpeg';
+    this.selectedPhoto = '../assets/choose' + numberPhoto + '.jpeg';
   }
 
   onAddComment() {
-    if (this.username === '' || this.com === '') {
+    if (this.username === '' || this.comm === '') {
       alert('Enter the name and/or comment');
     } else {
-      if (this.photosToChoose === false || this.btn === false) {
+      if (this.photosToChoose === false || this.btnSelectPhoto === false) {
         this.selectedPhoto = '../assets/Unknown.png';
       }
 
       this.service.create(
         {
           name: this.username,
-          data: this.todaysDate,
-          com: this.com,
+          dateAdded: this.todaysDate,
+          comment: this.comm,
           photo: this.selectedPhoto,
-          disabledText: true,
-          hiddenDeleteorEditBtn: false,
-          hiddenOKBtn: true
+          isDisabledText: true,
+          isHiddenRemoveOrEditBtn: false,
+          isHiddenOKBtn: true
         });
 
-
       this.username = '';
-      this.com = '';
+      this.comm = '';
       this.selectedPhoto = '';
-      this.btn = false;
       this.photosToChoose = true;
+      this.btnSelectPhoto = false;
     }
   }
-
 
   pressEnter(event) {
     if (event.keyCode === 13) {

@@ -7,13 +7,11 @@
       </span>
 
       <img src="{{selectedPhoto}}">
-
     </div>
     <div class="text">
       <div class="data"><input type="text" placeholder="NAME" [(ngModel)]="username">{{todaysDate | date: 'shortTime'}}
         | {{todaysDate | date: 'fullDate'}}</div>
-
-      <textarea (keyup)="pressEnter($event)" class="textadd" [(ngModel)]="comm"></textarea>
+      <textarea (keyup.enter)="onAddComment()" class="textadd" [(ngModel)]="comm"></textarea>
 
       <div class="btn">
         <button (click)="onAddComment()" type="submit" value="add">ADD</button>

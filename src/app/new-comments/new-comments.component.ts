@@ -9,12 +9,20 @@ import {CommsService} from '../comms.service';
 })
 export class NewCommentsComponent {
 
-  btnSelectPhoto = false;
-  selectedPhoto = '';
-  username = '';
-  comm = '';
+  btnSelectPhoto: boolean;
+  selectedPhoto: string;
+  username: string;
+  comm: string;
+  photosToChoose: boolean;
   todaysDate: number = Date.now();
-  photosToChoose = true;
+
+  basicDetails() {
+    this.photosToChoose = true;
+    this.btnSelectPhoto = false;
+    this.selectedPhoto = '';
+    this.username = '';
+    this.comm = '';
+  }
 
   constructor(private service: CommsService) {
   }
@@ -48,18 +56,9 @@ export class NewCommentsComponent {
           isHiddenOKBtn: true
         });
 
-      this.username = '';
-      this.comm = '';
-      this.selectedPhoto = '';
+      this.basicDetails();
       this.photosToChoose = true;
       this.btnSelectPhoto = false;
     }
   }
-
-  pressEnter(event) {
-    if (event.keyCode === 13) {
-      this.onAddComment();
-    }
-  }
-
 }

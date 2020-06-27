@@ -1,7 +1,7 @@
 <section class="boardOfComments">
   <div class="boardOfComments__single" *ngFor="let comment of comments; let i=index">
     <div class="boardOfComments__single-photo">
-      <img src={{comment.photo}}>
+      <img src= '{{comment.photo}}'>
     </div>
     <div class="text">
       <div class="data">{{comment.name}} | {{comment.dateAdded| date: 'shortTime'}} | {{comment.dateAdded | date: 'fullDate'}}</div>

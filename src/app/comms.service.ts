@@ -59,8 +59,8 @@ export class CommsService {
     this.subject.next(this.comments);
   }
 
-  remove(commentNumber: number) {
-    this.comments.splice(commentNumber, 1);
+  remove(comment: number) {
+    this.comments.splice(comment, 1);
     this.subject.next(this.comments);
   }
 }

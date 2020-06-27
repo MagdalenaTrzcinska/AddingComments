@@ -14,7 +14,7 @@ export class NewCommentsComponent {
   username: string;
   comm: string;
   photosToChoose: boolean;
-  todaysDate: number = Date.now();
+  todaysDate = Date.now();
 
   basicDetails() {
     this.photosToChoose = true;
@@ -32,9 +32,9 @@ export class NewCommentsComponent {
     this.btnSelectPhoto = true;
   }
 
-  onPhotos(numberPhoto: number) {
+  onWhichPhotos(photo: number) {
     this.photosToChoose = true;
-    this.selectedPhoto = '../assets/choose' + numberPhoto + '.jpeg';
+    this.selectedPhoto = '../assets/choose' + photo + '.jpeg';
   }
 
   onAddComment() {

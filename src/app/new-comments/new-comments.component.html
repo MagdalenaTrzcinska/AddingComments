@@ -3,7 +3,7 @@
     <div class="photo">
       <button [hidden]="btnSelectPhoto" (click)="onChoosePhoto()">Select a photo</button>
       <span *ngFor="let photo of [1,2,3,4]; let i=index">
-        <img class="new" (click)="onPhotos(i+1)" [hidden]="photosToChoose" src="../assets/choose{{i+1}}.jpeg">
+        <img class="new" (click)="onWhichPhotos(i+1)" [hidden]="photosToChoose" src="../assets/choose{{i+1}}.jpeg">
       </span>
 
       <img src="{{selectedPhoto}}">

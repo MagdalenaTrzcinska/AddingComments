@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommsService} from '../comms.service';
 import {Comment} from '../comments';
 
@@ -8,22 +8,25 @@ import {Comment} from '../comments';
   styleUrls: ['./board-of-comments.component.scss'],
 })
 
-export class BoardOfCommentsComponent {
-   comments: Comment[] = [];
+export class BoardOfCommentsComponent implements OnInit {
+  comments: Comment[] = [];
 
   constructor(private service: CommsService) {
-   service.subject.subscribe(comms => {
+  }
+
+  ngOnInit() {
+    this.service.subject.subscribe(comms => {
       this.comments = comms;
     });
   }
 
-  onRemove(numberComment: number) {
-    this.service.remove(numberComment);
+  onRemove(comment: number) {
+    this.service.remove(comment);
   }
 
-  onEditOrDelete(numberComment: number) {
-    this.comments[numberComment].isDisabledText = !this.comments[numberComment].isDisabledText;
-    this.comments[numberComment].isHiddenRemoveOrEditBtn = !this.comments[numberComment].isHiddenRemoveOrEditBtn;
-    this.comments[numberComment].isHiddenOKBtn = !this.comments[numberComment].isHiddenOKBtn;
+  onEditOrDelete(comment: number) {
+    this.comments[comment].isDisabledText = !this.comments[comment].isDisabledText;
+    this.comments[comment].isHiddenRemoveOrEditBtn = !this.comments[comment].isHiddenRemoveOrEditBtn;
+    this.comments[comment].isHiddenOKBtn = !this.comments[comment].isHiddenOKBtn;
   }
 }

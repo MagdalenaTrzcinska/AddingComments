@@ -1,20 +1,30 @@
 <section class="newComments">
   <div class="newComments__add">
     <div class="photo">
-      <button [hidden]="btnSelectPhoto" (click)="onChoosePhoto()">Select a photo</button>
-      <span *ngFor="let photo of [1,2,3,4]; let i=index">
-        <img class="new" (click)="onWhichPhotos(i+1)" [hidden]="photosToChoose" src="../assets/choose{{i+1}}.jpeg">
-      </span>
+      <button [hidden]="btnSelectPhoto"
+              (click)="onChoosePhoto()">Select a photo
+      </button>
 
+      <span *ngFor="let photo of [1,2,3,4]; let i=index">
+        <img class="new" (click)="onWhichPhotos(i+1)"
+             [hidden]="photosToChoose" src="../assets/choose{{i+1}}.jpeg">
+      </span>
       <img src="{{selectedPhoto}}">
     </div>
+
     <div class="text">
-      <div class="data"><input type="text" placeholder="NAME" [(ngModel)]="username">{{todaysDate | date: 'shortTime'}}
-        | {{todaysDate | date: 'fullDate'}}</div>
-      <textarea (keyup.enter)="onAddComment()" class="textadd" [(ngModel)]="comm"></textarea>
+      <div class="data">
+        <input type="text" placeholder="NAME"
+               [(ngModel)]="username">{{todaysDate | date: 'shortTime'}} | {{todaysDate | date: 'fullDate'}}
+      </div>
+      <textarea class="textadd"
+                (keyup.enter)="onValidationOfComment()" [(ngModel)]="comm">
+      </textarea>
 
       <div class="btn">
-        <button (click)="onAddComment()" type="submit" value="add">ADD</button>
+        <button (click)="onValidationOfComment()"
+                type="submit" value="add">ADD
+        </button>
       </div>
     </div>
   </div>

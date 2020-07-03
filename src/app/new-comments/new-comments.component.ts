@@ -9,7 +9,7 @@ import {CommsService} from '../comms.service';
 })
 export class NewCommentsComponent {
 
-  btnSelectPhoto: boolean;
+  isBtnSelectPhoto: boolean;
   selectedPhoto: string;
   username: string;
   comm: string;
@@ -18,18 +18,19 @@ export class NewCommentsComponent {
 
   basicDetails() {
     this.photosToChoose = true;
-    this.btnSelectPhoto = false;
+    this.isBtnSelectPhoto = false;
     this.selectedPhoto = '';
     this.username = '';
     this.comm = '';
   }
 
   constructor(private service: CommsService) {
+    this.basicDetails();
   }
 
   onChoosePhoto() {
     this.photosToChoose = false;
-    this.btnSelectPhoto = true;
+    this.isBtnSelectPhoto = true;
   }
 
   onWhichPhotos(photo: number) {
@@ -37,28 +38,35 @@ export class NewCommentsComponent {
     this.selectedPhoto = '../assets/choose' + photo + '.jpeg';
   }
 
-  onAddComment() {
+  onValidationOfComment() {
     if (this.username === '' || this.comm === '') {
       alert('Enter the name and/or comment');
     } else {
-      if (this.photosToChoose === false || this.btnSelectPhoto === false) {
-        this.selectedPhoto = '../assets/Unknown.png';
-      }
-
-      this.service.create(
-        {
-          name: this.username,
-          dateAdded: this.todaysDate,
-          comment: this.comm,
-          photo: this.selectedPhoto,
-          isDisabledText: true,
-          isHiddenRemoveOrEditBtn: false,
-          isHiddenOKBtn: true
-        });
+      this.correctComment();
 
       this.basicDetails();
       this.photosToChoose = true;
-      this.btnSelectPhoto = false;
+      this.isBtnSelectPhoto = false;
     }
+  }
+
+  correctComment(){
+    if (this.photosToChoose === false || this.isBtnSelectPhoto === false) {
+      this.selectedPhoto = '../assets/Unknown.png';
+    }
+    this.addingToComments();
+  }
+
+  addingToComments() {
+    this.service.create(
+      {
+        name: this.username,
+        dateAdded: this.todaysDate,
+        comment: this.comm,
+        photo: this.selectedPhoto,
+        isDisabledText: true,
+        isHiddenRemoveOrEditBtn: false,
+        isHiddenOKBtn: true
+      });
   }
 }

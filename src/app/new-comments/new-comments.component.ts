@@ -10,10 +10,10 @@ import {CommsService} from '../comms.service';
 export class NewCommentsComponent {
 
   isBtnSelectPhoto: boolean;
+  photosToChoose: boolean;
   selectedPhoto: string;
   username: string;
   comm: string;
-  photosToChoose: boolean;
   todaysDate = Date.now();
 
   basicDetails() {
@@ -43,7 +43,6 @@ export class NewCommentsComponent {
       alert('Enter the name and/or comment');
     } else {
       this.correctComment();
-
       this.basicDetails();
       this.photosToChoose = true;
       this.isBtnSelectPhoto = false;
@@ -54,10 +53,10 @@ export class NewCommentsComponent {
     if (this.photosToChoose === false || this.isBtnSelectPhoto === false) {
       this.selectedPhoto = '../assets/Unknown.png';
     }
-    this.addingToComments();
+    this.addingComments();
   }
 
-  addingToComments() {
+  addingComments() {
     this.service.create(
       {
         name: this.username,

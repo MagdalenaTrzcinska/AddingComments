@@ -1,7 +1,7 @@
 <section class="newComments">
   <div class="newComments__add">
     <div class="photo">
-      <button [hidden]="btnSelectPhoto"
+      <button [hidden]="isBtnSelectPhoto"
               (click)="onChoosePhoto()">Select a photo
       </button>
 
@@ -14,16 +14,21 @@
 
     <div class="text">
       <div class="data">
-        <input type="text" placeholder="NAME"
-               [(ngModel)]="username">{{todaysDate | date: 'shortTime'}} | {{todaysDate | date: 'fullDate'}}
+        {{todaysDate | date: 'shortTime'}} |
+        {{todaysDate | date: 'fullDate'}}
+        <input type="text"
+               placeholder="NAME"
+               [(ngModel)]="username">
       </div>
       <textarea class="textadd"
-                (keyup.enter)="onValidationOfComment()" [(ngModel)]="comm">
+                (keyup.enter)="onValidationOfComment()"
+                [(ngModel)]="comm">
       </textarea>
 
       <div class="btn">
         <button (click)="onValidationOfComment()"
-                type="submit" value="add">ADD
+                type="submit"
+                value="add">ADD
         </button>
       </div>
     </div>
